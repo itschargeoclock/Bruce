@@ -1,0 +1,42 @@
+name: Build ESP32-DIV V2
+
+on:
+  push:
+    branches: [ feat/esp32-div-v2 ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Cache PlatformIO
+        uses: actions/cache@v4
+        with:
+          path: ~/.platformio
+          key: ${{ runner.os }}-platformio
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PlatformIO
+        run: |
+          python -m pip install --upgrade pip
+          pip install platformio
+      - name: Build firmware
+        run: |
+          pio run -e esp32-div-v2
+      - name: Upload firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: bruce-esp32-div-v2
+          path: .pio/build/esp32-div-v2/firmware.bin
