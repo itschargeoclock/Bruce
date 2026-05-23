@@ -1,4 +1,6 @@
-#include <interface.h>
+#include "../../src/interface.h"
+#include <Arduino.h>
+#include "pins_arduino.h"
 
 void _setup_gpio() {
     pinMode(TFT_BL, OUTPUT);
