@@ -1,1 +1,27 @@
-I2luY2x1ZGUgIi4uLy4uL2luY2x1ZGUvaW50ZXJmYWNlLmgiCiNpbmNsdWRlIDxBcmR1aW5vLmg+CiNpbmNsdWRlICJwaW5zX2FyZHVpbm8uaCIKCnZvaWQgX3NldHVwX2dwaW8oKSB7CiAgICBwaW5Nb2RlKFRGVApfQkwsIE9VVFBVVCk7CiAgICBkaWdpdGFsV3JpdGUoVEZUX0JMLCBESUdIKTsKICAgIAogICAgcGluTW9kZShCVVpa RVJfUElOLCBPVVRQVVQpOwogICAgZGlnaXRhbFdyaXRlKEJVWlpfUElOLCBMT1cpOwp9CgppbnQgZ2V0QmF0 dGVyeSgpIHsKICAgIHJldHVybiAxMDA7Cn0KCmJvb2wgaXNDaGFyZ2luZygpIHsgcmV0dXJuIGZhbHNlOyB9 Cgp2b2lkIF9zZXRCcmlnaHRuZXNzKHVpbnQ4X3QgYnJpZ2h0dmFsKSB7CiAgICBhbmFsb2dXcml0ZShURlRf QkwsIChicmlnaHR2YWwgKiAyNTUpIC8gMTAwKTsKfQoKdm9pZCBJbnB1dEhhbmRsZXIodm9pZCkgewp9Cgp2 b2lkIHBvd2VyT2ZmKCkge30Kdm9pZCBjaGVja1JlYm9vdCgpIHt9Cg==
+#include "../../include/interface.h"
+#include <Arduino.h>
+#include "pins_arduino.h"
+
+void _setup_gpio() {
+    pinMode(TFT_BL, OUTPUT);
+    digitalWrite(TFT_BL, HIGH);
+    
+    pinMode(BUZZER_PIN, OUTPUT);
+    digitalWrite(BUZZER_PIN, LOW);
+}
+
+int getBattery() {
+    return 100;
+}
+
+bool isCharging() { return false; }
+
+void _setBrightness(uint8_t brightval) {
+    analogWrite(TFT_BL, (brightval * 255) / 100);
+}
+
+void InputHandler(void) {
+}
+
+void powerOff() {}
+void checkReboot() {}
