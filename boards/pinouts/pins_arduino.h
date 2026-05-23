@@ -34,4 +34,6 @@
 #include "../marauder-touch/pins_arduino.h"
 #elif MARAUDER_MINI
 #include "../marauder-mini/pins_arduino.h"
+#elif ESP32_DIV_V2
+#include "../esp32-div-v2/pins_arduino.h"
 #endif
