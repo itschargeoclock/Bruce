@@ -76,6 +76,13 @@ static const uint8_t SCL = GROVE_SCL;
 #define CC1101_MOSI_PIN SPI_MOSI_PIN
 #define CC1101_SCK_PIN SPI_SCK_PIN
 
+// W5500 over QWIIC port
+#define USE_W5500_VIA_SPI
+#define W5500_SS_PIN 44
+#define W5500_MOSI_PIN SPI_MOSI_PIN
+#define W5500_SCK_PIN SPI_SCK_PIN
+#define W5500_MISO_PIN SPI_MISO_PIN
+#define W5500_INT_PIN 43
 // PN532
 #define PN532_RF_REST 45
 #define PN532_IRQ 17
@@ -96,12 +103,20 @@ static const uint8_t SCL = GROVE_SCL;
 #define SERIAL_RX 44
 static const uint8_t TX = SERIAL_TX;
 static const uint8_t RX = SERIAL_RX;
+#define GPS_SERIAL_TX SERIAL_TX
+#define GPS_SERIAL_RX SERIAL_RX
 #define TX1 TX
 #define RX1 RX
 
 // Fuel Gauge
 #define USE_BQ27220_VIA_I2C
 #define BQ27220_I2C_ADDRESS 0x55
+#ifdef BQ27220_I2C_SDA
+#undef BQ27220_I2C_SDA
+#endif
+#ifdef BQ27220_I2C_SCL
+#undef BQ27220_I2C_SCL
+#endif
 #define BQ27220_I2C_SDA GROVE_SDA
 #define BQ27220_I2C_SCL GROVE_SCL
 
@@ -119,7 +134,7 @@ static const uint8_t RX = SERIAL_RX;
 #define BTN_ACT LOW
 
 // IR
-#define LED 2
+#define TXLED 2
 #define RXLED 1
 #define LED_ON HIGH
 #define LED_OFF LOW
@@ -138,6 +153,8 @@ static const uint8_t RX = SERIAL_RX;
 #define LED_ORDER GRB
 #define LED_TYPE_IS_RGBW 0
 #define LED_COUNT 8
+#define LED_COLOR_STEP 5
+#define HAS_ENCODER_LED 1
 
 // BadUSB
 #define USB_as_HID 1
@@ -232,6 +249,14 @@ static const uint8_t SCL = GROVE_SCL;
 #define CC1101_MOSI_PIN SPI_MOSI_PIN
 #define CC1101_SCK_PIN SPI_SCK_PIN
 
+// W5500 over QWIIC port
+#define USE_W5500_VIA_SPI
+#define W5500_SS_PIN 43
+#define W5500_MOSI_PIN SPI_MOSI_PIN
+#define W5500_SCK_PIN SPI_SCK_PIN
+#define W5500_MISO_PIN SPI_MISO_PIN
+#define W5500_INT_PIN 44
+
 // Mic#
 #define PIN_CLK 21
 #define PIN_DATA 14
@@ -246,8 +271,9 @@ static const uint8_t SCL = GROVE_SCL;
 // Serial
 #define SERIAL_TX 43
 #define SERIAL_RX 44
-
-#define BAT_PIN 4
+#define GPS_SERIAL_TX SERIAL_TX
+#define GPS_SERIAL_RX SERIAL_RX
+#define ANALOG_BAT_PIN 4
 
 // Encoder
 #define HAS_ENCODER
@@ -262,7 +288,7 @@ static const uint8_t SCL = GROVE_SCL;
 #define BTN_ACT LOW
 
 // IR
-#define LED 44
+#define TXLED 44
 #define RXLED 43
 #define LED_ON HIGH
 #define LED_OFF LOW
@@ -274,13 +300,15 @@ static const uint8_t SCL = GROVE_SCL;
 // #define FM_RSTPIN 40
 
 // RGB LED
-#define HAS_RGB_LED
+#define HAS_RGB_LED 1
 #define RGB_LED 42
 #define RGB_LED_CLK 45
 #define LED_TYPE APA102
 #define LED_ORDER BGR
 #define LED_TYPE_IS_RGBW 0
 #define LED_COUNT 8
+#define LED_COLOR_STEP 5
+#define HAS_ENCODER_LED 1
 
 // BadUSB
 #define USB_as_HID 1

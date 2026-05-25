@@ -9,19 +9,31 @@ public:
     virtual ~MenuItemInterface() = default;
     virtual void optionsMenu(void) = 0;
     virtual void drawIcon(float scale = 1) = 0;
-    virtual void drawIconImg() = 0;
-    virtual bool getTheme() = 0;
+    virtual void drawIconImg() {
+        drawImg(
+            *bruceConfig.themeFS(),
+            bruceConfig.getThemeItemImg(themePath()),
+            0,
+            imgCenterY,
+            true,
+            bruceConfig.theme.gifDuration,
+            false
+        );
+    }
+    virtual bool hasTheme() = 0;
+    virtual String themePath() = 0;
 
+    bool checkTheme() { return hasTheme() && themePath() != ""; }
     String getName() const { return _name; }
 
     void draw(float scale = 1) {
-        if (rotation != bruceConfig.rotation) resetCoordinates();
-        if (!getTheme()) {
+        if (rotation != bruceConfigPins.rotation) resetCoordinates();
+        if (!checkTheme()) {
+            tft.fillRect(0, 27, tftWidth, tftHeight - 27, bruceConfig.bgColor);
             drawIcon(scale);
             drawArrows(scale);
             drawTitle(scale);
         } else {
-            clearImgArea();
             if (bruceConfig.theme.label)
                 drawTitle(scale); // If using .GIF, labels are draw after complete, which takes some time
             drawIconImg();
@@ -141,8 +153,10 @@ protected:
         arrowAreaX = BORDER_PAD_X;
         arrowAreaW = iconAreaX - arrowAreaX;
 
-        rotation = bruceConfig.rotation;
+        rotation = bruceConfigPins.rotation;
     }
+
+private:
 };
 
-#endif
+#endif // __MENU_ITEM_INTERFACE_H__

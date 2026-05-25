@@ -1,6 +1,5 @@
 #include "core/display.h"
 #include <NTPClient.h>
-#include <Timezone.h>
 #include <WiFi.h>
 
 #ifndef __WIFI_COMMON_H__
@@ -22,6 +21,14 @@ void wifiDisconnect();
 bool wifiConnectMenu(wifi_mode_t = WIFI_MODE_STA);
 
 /**
+ * @brief Scans the networks and tries to connect to a known network
+ * @param mode connection mode(void)
+ * @note This is the primary entry point for establishing connections in the Headless environment
+ * @note returns true if connected successfully
+ */
+bool wifiConnecttoKnownNet(void);
+
+/**
  * @brief returns MAC adress
  */
 String checkMAC();
@@ -32,6 +39,11 @@ String checkMAC();
  * @TODO fix: rn it skips open networks due to password == "" check
  */
 void wifiConnectTask(void *pvParameters);
+
+/**
+ * @brief Ensures esp_netif and the default event loop are initialized (idempotent)
+ */
+void ensureWifiPlatform();
 
 // private
 /**
@@ -45,5 +57,7 @@ bool _connectToWifiNetwork(const String &ssid, const String &pwd);
  * @note wifi.mode should be set before calling the method
  */
 bool _setupAP();
+
+void updateTimezoneTask(void *pvParameters);
 
 #endif

@@ -73,20 +73,6 @@ void powerOff() {}
 /*********************************************************************
 ** Function: checkReboot
 ** location: mykeyboard.cpp
-** Btn logic to tornoff the device (name is odd btw)
+** Btn logic to turn off the device (name is odd btw)
 **********************************************************************/
 void checkReboot() {}
-
-/*********************************************************************
-** Function: _checkNextPagePress
-** location: mykeyboard.cpp
-** returns the key from the keyboard
-**********************************************************************/
-bool _checkNextPagePress() { return false; }
-
-/*********************************************************************
-** Function: _checkPrevPagePress
-** location: mykeyboard.cpp
-** returns the key from the keyboard
-**********************************************************************/
-bool _checkPrevPagePress() { return false; }

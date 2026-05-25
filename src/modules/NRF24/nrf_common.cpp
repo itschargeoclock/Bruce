@@ -1,7 +1,8 @@
 #include "nrf_common.h"
 #include "../../core/mykeyboard.h"
 
-RF24 NRFradio(NRF24_CE_PIN, NRF24_SS_PIN);
+RF24 NRFradio(bruceConfigPins.NRF24_bus.io0, bruceConfigPins.NRF24_bus.cs);
+HardwareSerial NRFSerial = HardwareSerial(2); // Uses UART2 for External NRF's
 SPIClass *NRFSPI;
 
 void nrf_info() {
@@ -12,18 +13,34 @@ void nrf_info() {
     tft.setTextColor(TFT_WHITE, bruceConfig.bgColor);
     tft.setTextSize(FP);
     tft.setCursor(15, 33);
-    tft.println("These functions were made to be used in a controlled environment for STUDY only.");
-    tft.println("\nDO NOT use these functions to harm people or companies, you can go to jail!");
+    padprintln("These functions were made to be used in a controlled environment for STUDY only.");
+    padprintln("");
+    padprintln("DO NOT use these functions to harm people or companies, you can go to jail!");
     tft.setTextColor(bruceConfig.priColor, bruceConfig.bgColor);
-    tft.println(
-        "\nThis device is VERY sensible to noise, so long wires or passing near VCC line can make "
+    padprintln("");
+    padprintln(
+        "This device is VERY sensible to noise, so long wires or passing near VCC line can make "
         "things go wrong."
     );
     delay(1000);
     while (!check(AnyKeyPress));
 }
 
-bool nrf_start() {
+bool nrf_start(NRF24_MODE mode) {
+    bool result = false;
+    if (mode == NRF_MODE_DISABLED) return false;
+
+    if (CHECK_NRF_UART(mode)) {
+        if (USBserial.getSerialOutput() == &Serial1) {
+            displayError("(E) UART already in use", true);
+            return false;
+        }
+        NRFSerial.begin(115200, SERIAL_8N1, bruceConfigPins.uart_bus.rx, bruceConfigPins.uart_bus.tx);
+        Serial.println("NRF24 on Serial Started");
+        result = true;
+    };
+
+    if (!CHECK_NRF_SPI(mode)) return result;
     pinMode(bruceConfigPins.NRF24_bus.cs, OUTPUT);
     digitalWrite(bruceConfigPins.NRF24_bus.cs, HIGH);
     pinMode(bruceConfigPins.NRF24_bus.io0, OUTPUT);
@@ -62,6 +79,21 @@ bool nrf_start() {
             rf24_gpio_pin_t(bruceConfigPins.NRF24_bus.io0),
             rf24_gpio_pin_t(bruceConfigPins.NRF24_bus.cs)
         )) {
-        return true;
-    } else return false;
+        result = true;
+    } else {
+        return false;
+    }
+    return result;
+}
+
+NRF24_MODE nrf_setMode() {
+    NRF24_MODE mode = NRF_MODE_DISABLED;
+    options = {
+        {"SPI Mode",  [&]() { mode = NRF_MODE_SPI; } },
+        {"SPI UART",  [&]() { mode = NRF_MODE_UART; }},
+        {"SPI BOTH",  [&]() { mode = NRF_MODE_BOTH; }},
+        {"Main Menu", [=]() { returnToMenu = true; } }
+    };
+    loopOptions(options);
+    return mode;
 }

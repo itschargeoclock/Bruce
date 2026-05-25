@@ -2,7 +2,14 @@
 #include "display.h"
 #include <globals.h>
 
-String keyboard(String mytext, int maxSize = 76, String msg = "Type your message:");
+String keyboard(String mytext, int maxSize = 76, String msg = "Type your message:", bool mask_input = false);
+String
+hex_keyboard(String mytext, int maxSize = 76, String msg = "Type you HEX value:", bool mask_input = false);
+String
+num_keyboard(String mytext, int maxSize = 76, String msg = "Insert your number:", bool mask_input = false);
+
+// Opens a menu to pick the keyboard language and saves the choice to bruceConfig
+void setKeyboardLanguage();
 
 void __attribute__((weak)) powerOff();
 void __attribute__((weak)) goToDeepSleep();
@@ -19,6 +26,3 @@ keyStroke _getKeyPress(); // This function must be implemented in the interface.
 void checkShortcutPress();
 int checkNumberShortcutPress();
 char checkLetterShortcutPress();
-
-bool checkNextPagePress();
-bool checkPrevPagePress();

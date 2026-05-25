@@ -12,6 +12,7 @@
 #include "core/mykeyboard.h"
 #include "core/sd_functions.h"
 #include "core/settings.h"
+#include "ir_utils.h"
 #include <IRrecv.h>
 #include <IRutils.h>
 #include <globals.h>
@@ -26,7 +27,7 @@ String uint32ToString(uint32_t value) {
     snprintf(
         buffer,
         sizeof(buffer),
-        "%02X %02X %02X %02X",
+        "%02lX %02lX %02lX %02lX",
         value & 0xFF,
         (value >> 8) & 0xFF,
         (value >> 16) & 0xFF,
@@ -40,7 +41,7 @@ String uint32ToStringInverted(uint32_t value) {
     snprintf(
         buffer,
         sizeof(buffer),
-        "%02X %02X %02X %02X",
+        "%02lX %02lX %02lX %02lX",
         (value >> 24) & 0xFF,
         (value >> 16) & 0xFF,
         (value >> 8) & 0xFF,
@@ -58,20 +59,19 @@ bool quickloop = false;
 
 void IrRead::setup() {
     irrecv.enableIRIn();
-    
- 
-    #ifdef USE_BQ25896  ///ENABLE 5V OUTPUT
+
+#ifdef USE_BOOST /// ENABLE 5V OUTPUT
     PPM.enableOTG();
-    #endif
+#endif
     // Checks if irRx pin is properly set
     const std::vector<std::pair<String, int>> pins = IR_RX_PINS;
     int count = 0;
     for (auto pin : pins) {
-        if (pin.second == bruceConfig.irRx) count++;
+        if (pin.second == bruceConfigPins.irRx) count++;
     }
     if (count == 0) gsetIrRxPin(true); // Open dialog to choose irRx pin
 
-    pinMode(bruceConfig.irRx, INPUT);
+    setup_ir_pin(bruceConfigPins.irRx, INPUT_PULLUP);
     if (headless) return;
     // else
     returnToMenu = true; // make sure menu is redrawn when quitting in any point
@@ -81,16 +81,27 @@ void IrRead::setup() {
              quickButtons = quickButtonsTV;
              begin();
              return loop();
-         }},
+         }                     },
         {"AC",
          [&]() {
              quickButtons = quickButtonsAC;
              begin();
              return loop();
-         }},
+         }                     },
+        {"FAN",
+         [&]() {
+             quickButtons = quickButtonsFAN;
+             begin();
+             return loop();
+         }                     },
         {"SOUND",
          [&]() {
              quickButtons = quickButtonsSOUND;
+             begin();
+             return loop();
+         }                     },
+        {"LED STRIP", [&]() {
+             quickButtons = quickButtonsLED;
              begin();
              return loop();
          }},
@@ -117,10 +128,9 @@ void IrRead::loop() {
             returnToMenu = true;
             button_pos = 0;
             quickloop = false;
-
-             #ifdef USE_BQ25896  ///DISABLE 5V OUTPUT
-  PPM.disableOTG();
-  #endif
+#ifdef USE_BOOST /// DISABLE 5V OUTPUT
+            PPM.disableOTG();
+#endif
             break;
         }
         if (check(NextPress)) save_signal();

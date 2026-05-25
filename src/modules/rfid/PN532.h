@@ -7,10 +7,13 @@
  */
 
 #include "RFIDInterface.h"
+#define private public
 #include <Adafruit_PN532.h>
+#undef private
 
 class PN532 : public RFIDInterface {
 public:
+    enum CONNECTION_TYPE { I2C = 1, I2C_SPI = 2, SPI = 3 };
     enum PICC_Type {
         PICC_TYPE_MIFARE_MINI = 0x09, // MIFARE Classic protocol, 320 bytes
         PICC_TYPE_MIFARE_1K = 0x08,   // MIFARE Classic protocol, 1KB
@@ -30,7 +33,7 @@ public:
     /////////////////////////////////////////////////////////////////////////////////////
     // Constructor
     /////////////////////////////////////////////////////////////////////////////////////
-    PN532(bool use_i2c = true);
+    PN532(CONNECTION_TYPE connection_type = I2C);
 
     /////////////////////////////////////////////////////////////////////////////////////
     // Life Cycle
@@ -45,11 +48,13 @@ public:
     int erase();
     int write(int cardBaudRate = PN532_MIFARE_ISO14443A);
     int write_ndef();
+    int emulate() override;
     int load();
     int save(String filename);
 
 private:
     bool _use_i2c;
+    CONNECTION_TYPE _connection_type;
 
     /////////////////////////////////////////////////////////////////////////////////////
     // Converters

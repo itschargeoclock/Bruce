@@ -1,3 +1,4 @@
+#ifndef LITE_VERSION
 // SSH borrowed from https://github.com/m5stack/M5Cardputer :)
 
 // TODO: Display is kinda glitchy :P figure out some way to show better outputs also
@@ -61,23 +62,43 @@ void ssh_setup(String host) {
     else {
         String my_net =
             WiFi.gatewayIP().toString().substring(0, WiFi.gatewayIP().toString().lastIndexOf(".") + 1);
-        ssh_host = keyboard(my_net, 15, "SSH HOST (IP)");
+        ssh_host = keyboard(my_net, 100, "SSH HOST (IP or Hostname)");
         // ssh_host=keyboard("192.168.3.60",15,"SSH HOST (IP)");
     }
-    ssh_port = keyboard("22", 5, "SSH PORT");
+    ssh_port = num_keyboard("22", 5, "SSH PORT");
 
     ssh_user = keyboard("", 76, "SSH USER");
     // ssh_user=keyboard("ubuntu",76,"SSH USER");
 
-    ssh_password = keyboard("", 76, "SSH PASSWORD");
-    // ssh_password=keyboard("ubuntu",76,"SSH PASSWORD");
+    ssh_password = keyboard("", 76, "SSH PASSWORD", true);
+    // ssh_password=keyboard("ubuntu",76,"SSH PASSWORD", true);
+
+    IPAddress resolvedIp;
+    if (WiFi.hostByName(ssh_host.c_str(), resolvedIp)) {
+        ssh_host = resolvedIp.toString();
+    } else {
+        tft.setTextColor(TFT_RED, bruceConfig.bgColor);
+        displayRedStripe("Failed to resolve hostname.", true);
+        log_e("Failed to resolve hostname: %s", ssh_host.c_str());
+        returnToMenu = true;
+        return;
+    }
 
     // Connect to SSH server
     TaskHandle_t sshTaskHandle = NULL;
-    xTaskCreatePinnedToCore(ssh_loop, "SSH Task", 20000, NULL, 1, &sshTaskHandle, 1);
-    if (sshTaskHandle == NULL) { Serial.println("Failed to create SSH Task"); }
 
-    while (!returnToMenu) { vTaskDelay(10 / portTICK_PERIOD_MS); }
+#if SOC_CPU_CORES_NUM > 1
+    xTaskCreatePinnedToCore(ssh_loop, "SSH Task", SSH_TASK_STACK_SIZE, NULL, 1, &sshTaskHandle, 1);
+#else
+    xTaskCreate(ssh_loop, "SSH Task", SSH_TASK_STACK_SIZE, NULL, 1, &sshTaskHandle); // runs on core0
+#endif
+    if (sshTaskHandle == NULL) {
+        displayError("SSH Task creation failed.", true);
+        Serial.println("Failed to create SSH Task");
+        return;
+    }
+
+    while (!returnToMenu) { vTaskDelay(pdMS_TO_TICKS(200)); }
 }
 
 void ssh_loop(void *pvParameters) {
@@ -91,12 +112,14 @@ void ssh_loop(void *pvParameters) {
     log_d("AFTER SSH");
     // Disable watchdog
     disableCore0WDT();
+#if SOC_CPU_CORES_NUM > 1
     disableCore1WDT();
+#endif
     disableLoopWDT();
 
     if (my_ssh_session == NULL) {
         tft.setTextColor(TFT_RED, bruceConfig.bgColor);
-        displayRedStripe("SSH Session creation failed.", true);
+        displayError("SSH Session creation failed.", true);
         log_d("SSH Session creation failed.");
         returnToMenu = true;
         vTaskDelete(NULL);
@@ -112,7 +135,7 @@ void ssh_loop(void *pvParameters) {
 
     if (ssh_connect(my_ssh_session) != SSH_OK) {
         tft.setTextColor(TFT_RED, bruceConfig.bgColor);
-        displayRedStripe("SSH Connect error.", true);
+        displayError("SSH Connect error.", true);
         log_d("SSH Connect error.");
         ssh_free(my_ssh_session);
         returnToMenu = true;
@@ -122,7 +145,7 @@ void ssh_loop(void *pvParameters) {
 
     if (ssh_userauth_password(my_ssh_session, NULL, ssh_password.c_str()) != SSH_AUTH_SUCCESS) {
         tft.setTextColor(TFT_RED, bruceConfig.bgColor);
-        displayRedStripe("SSH Authentication error.", true);
+        displayError("SSH Authentication error.", true);
         log_d("SSH Authentication error.");
         ssh_disconnect(my_ssh_session);
         ssh_free(my_ssh_session);
@@ -134,7 +157,7 @@ void ssh_loop(void *pvParameters) {
     channel_ssh = ssh_channel_new(my_ssh_session);
     if (channel_ssh == NULL || ssh_channel_open_session(channel_ssh) != SSH_OK) {
         tft.setTextColor(TFT_RED, bruceConfig.bgColor);
-        displayRedStripe("SSH Channel open error.", true);
+        displayError("SSH Channel open error.", true);
         log_d("SSH Channel open error.");
         ssh_disconnect(my_ssh_session);
         ssh_free(my_ssh_session);
@@ -145,7 +168,7 @@ void ssh_loop(void *pvParameters) {
 
     if (ssh_channel_request_pty(channel_ssh) != SSH_OK) {
         tft.setTextColor(TFT_RED, bruceConfig.bgColor);
-        displayRedStripe("SSH PTY request error.", true);
+        displayError("SSH PTY request error.", true);
         log_d("SSH PTY request error.");
         ssh_channel_close(channel_ssh);
         ssh_channel_free(channel_ssh);
@@ -158,7 +181,7 @@ void ssh_loop(void *pvParameters) {
 
     if (ssh_channel_request_shell(channel_ssh) != SSH_OK) {
         tft.setTextColor(TFT_RED, bruceConfig.bgColor);
-        displayRedStripe("SSH Shell request error.", true);
+        displayError("SSH Shell request error.", true);
         log_d("SSH Shell request error.");
         ssh_channel_close(channel_ssh);
         ssh_channel_free(channel_ssh);
@@ -282,11 +305,13 @@ void ssh_loop(void *pvParameters) {
     ssh_disconnect(my_ssh_session);
     ssh_free(my_ssh_session);
     check(SelPress); // Reset Button
-    displayRedStripe("SSH session closed.", true);
+    displayWarning("SSH session closed.", true);
     tft.setTextColor(bruceConfig.priColor, bruceConfig.bgColor);
     returnToMenu = true;
     enableCore0WDT();
+#if SOC_CPU_CORES_NUM > 1
     enableCore1WDT();
+#endif
     enableLoopWDT();
     feedLoopWDT();
     vTaskDelete(NULL);
@@ -376,7 +401,7 @@ void telnet_setup() {
 
     // auto cfg = M5.config();
     // M5Cardputer.begin(cfg, true);
-    tft.setRotation(bruceConfig.rotation);
+    tft.setRotation(bruceConfigPins.rotation);
     tft.setTextSize(1); // Set text size
 
     cursorY = tft.getCursorY();
@@ -394,7 +419,7 @@ void telnet_setup() {
 
     // tft.print("TELNET Port: \n");
     // waitForInput(telnet_port_string);
-    telnet_port_string = keyboard("", 76, "TELNET PORT");
+    telnet_port_string = num_keyboard("", 76, "TELNET PORT");
     delay(300);
     char arr2[5];
     // telnet_server_port_char =
@@ -406,3 +431,4 @@ void telnet_setup() {
 
     telnet_loop();
 }
+#endif

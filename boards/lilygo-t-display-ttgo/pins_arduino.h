@@ -5,7 +5,7 @@
 #include <stdint.h>
 
 #define ADC_EN 14 // ADC_EN is the ADC detection enable port
-#define ADC_PIN 34
+#define ANALOG_BAT_PIN 34
 
 // Lite Version
 // #define LITE_VERSION 1
@@ -33,6 +33,13 @@
 #define NRF24_MOSI_PIN SPI_MOSI_PIN
 #define NRF24_SCK_PIN SPI_SCK_PIN
 #define NRF24_MISO_PIN SPI_MISO_PIN
+
+#define USE_W5500_VIA_SPI
+#define W5500_SS_PIN 38
+#define W5500_MOSI_PIN SPI_MOSI_PIN
+#define W5500_SCK_PIN SPI_SCK_PIN
+#define W5500_MISO_PIN SPI_MISO_PIN
+#define W5500_INT_PIN 37
 
 static const uint8_t SS = SPI_SS_PIN;
 static const uint8_t MOSI = SPI_MOSI_PIN;
@@ -76,6 +83,9 @@ static const uint8_t SCL = GROVE_SCL;
 #define SERIAL_TX 12
 #define SERIAL_RX 13
 
+#define GPS_SERIAL_TX SERIAL_TX
+#define GPS_SERIAL_RX SERIAL_RX
+
 #define BAD_TX 12
 #define BAD_RX 13
 
@@ -87,7 +97,7 @@ static const uint8_t SCL = GROVE_SCL;
 #define BTN_ACT LOW
 
 // IR pins
-#define LED 2
+#define TXLED 2
 #define RXLED 15
 
 #define LED_ON HIGH

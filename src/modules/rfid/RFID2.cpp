@@ -17,7 +17,9 @@
 #define RFID2_I2C_ADDRESS 0x28
 
 RFID2::RFID2(bool use_i2c) : _use_i2c(use_i2c) {
-    if (use_i2c) _driver = new MFRC522DriverI2C{RFID2_I2C_ADDRESS, GROVE_SDA, GROVE_SCL};
+    if (use_i2c)
+        _driver =
+            new MFRC522DriverI2C{RFID2_I2C_ADDRESS, bruceConfigPins.i2c_bus.sda, bruceConfigPins.i2c_bus.scl};
     else _driver = new MFRC522DriverSPI{ss_pin, SPI_SCK_PIN, SPI_MISO_PIN, SPI_MOSI_PIN};
     mfrc522.SetDriver(*_driver);
 }
@@ -470,6 +472,11 @@ int RFID2::write_data_blocks() {
 
     while (strAllPages.length() > 0) {
         lineBreakIndex = strAllPages.indexOf("\n");
+
+        if (lineBreakIndex < 0) { // ← Added for .JS and Bugfix
+            break;
+        }
+
         pageLine = strAllPages.substring(0, lineBreakIndex);
         strAllPages = strAllPages.substring(lineBreakIndex + 1);
 
@@ -483,12 +490,12 @@ int RFID2::write_data_blocks() {
             case MFRC522::PICC_Type::PICC_TYPE_MIFARE_MINI:
             case MFRC522::PICC_Type::PICC_TYPE_MIFARE_1K:
             case MFRC522::PICC_Type::PICC_TYPE_MIFARE_4K:
-                if (pageIndex == 0 || (pageIndex + 1) % 4 == 0) continue; // Data blocks for MIFARE Classic
+                if (pageIndex == 0 || (pageIndex + 1) % 4 == 0) continue;
                 blockWriteSuccess = write_mifare_classic_data_block(pageIndex, strBytes);
                 break;
 
             case MFRC522::PICC_Type::PICC_TYPE_MIFARE_UL:
-                if (pageIndex < 4 || pageIndex >= dataPages - 5) continue; // Data blocks for NTAG21X
+                if (pageIndex < 4 || pageIndex >= dataPages - 5) continue;
                 blockWriteSuccess = write_mifare_ultralight_data_block(pageIndex, strBytes);
                 break;
 

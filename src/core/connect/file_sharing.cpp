@@ -1,3 +1,4 @@
+#if !defined(LITE_VERSION)
 #include "file_sharing.h"
 #include "core/display.h"
 #include <SD.h>
@@ -111,7 +112,8 @@ void FileSharing::receiveFile() {
         padprintln(recvFileName);
         padprintln("\n");
         padprintln("Press any key to leave");
-        while (!check(AnyKeyPress)) delay(80);
+        while (!check(AnyKeyPress)) vTaskDelay(50 / portTICK_PERIOD_MS);
+        ;
     }
 }
 
@@ -172,3 +174,4 @@ void FileSharing::createFilename(FS *fs, FileSharing::Message fileMessage) {
 
     recvFileName = messageFilepath + "/" + filename + ext;
 }
+#endif

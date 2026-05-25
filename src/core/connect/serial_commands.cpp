@@ -1,3 +1,4 @@
+#if !defined(LITE_VERSION)
 #include "serial_commands.h"
 #include "core/display.h"
 #include "core/mykeyboard.h"
@@ -81,7 +82,7 @@ void EspSerialCmd::receiveCommands() {
             recvStatus = WAITING;
         }
         if (recvStatus == SUCCESS) {
-            displayRecvCommand(serialCli.parse(recvCommand));
+            displayRecvCommand(parseSerialCommand(recvCommand));
             recvStatus = WAITING;
         }
 
@@ -164,3 +165,4 @@ void EspSerialCmd::displaySentFooter() {
     padprintln("");
     padprintln("Press [ESC] to leave");
 }
+#endif

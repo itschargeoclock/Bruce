@@ -8,9 +8,10 @@ Thanks to @bmorcelli (Pirata) for his help doing a better code.
 20/09 - Changed from DynamicJsonDocument json[2048] to JsonDocument json, to avoid stack smashing errors
 (firgers crossed)
 */
-
+#if !defined(LITE_VERSION)
 #include "pwngrid.h"
 #include "../wifi/sniffer.h"
+#include "core/wifi/wifi_common.h"
 
 uint8_t pwngrid_friends_tot = 0;
 std::vector<pwngrid_peer> pwngrid_peers;
@@ -311,6 +312,7 @@ const wifi_promiscuous_filter_t filter = {
 };
 
 void initPwngrid() {
+    ensureWifiPlatform();
     wifi_init_config_t WIFI_INIT_CONFIG = WIFI_INIT_CONFIG_DEFAULT();
     esp_wifi_init(&WIFI_INIT_CONFIG);
     esp_wifi_set_storage(WIFI_STORAGE_RAM);
@@ -323,3 +325,4 @@ void initPwngrid() {
     esp_wifi_set_channel(random(0, 14), WIFI_SECOND_CHAN_NONE);
     vTaskDelay(1 / portTICK_RATE_MS);
 }
+#endif

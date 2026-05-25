@@ -6,6 +6,8 @@
 #include "../lilygo-t-embed-cc1101/pins_arduino.h"
 #elif T_DECK
 #include "../lilygo-t-deck/pins_arduino.h"
+#elif T_LORA_PAGER
+#include "../lilygo-t-lora-pager/pins_arduino.h"
 #elif ARDUINO_M5STACK_CARDPUTER
 #include "../m5stack-cardputer/pins_arduino.h"
 #elif CYD_2432S028
@@ -24,6 +26,10 @@
 #include "../ESP-General/pins_arduino.h"
 #elif SMOOCHIEE_BOARD
 #include "../smoochiee-board/pins_arduino.h"
+#elif XK404
+#include "../xk404/pins_arduino.h"
+#elif REAPER
+#include "../reaper/pins_arduino.h"
 #elif T_WATCH_S3
 #include "../lilygo-t-watch-s3/pins_arduino.h"
 #elif T_DISPLAY_S3_PRO
@@ -34,4 +40,10 @@
 #include "../marauder-touch/pins_arduino.h"
 #elif MARAUDER_MINI
 #include "../marauder-mini/pins_arduino.h"
+#elif LILYGO_T_HMI
+#include "../lilygo-t-hmi/pins_arduino.h"
+#elif ESP32C5_DEVKITC_1_TFT
+#include "../ESP32-C5-tft/pins_arduino.h"
+#elif ESP32C5_DEVKITC_1
+#include "../ESP32-C5/pins_arduino.h"
 #endif

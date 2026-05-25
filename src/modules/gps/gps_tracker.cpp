@@ -10,9 +10,9 @@
 #include "core/display.h"
 #include "core/mykeyboard.h"
 #include "core/sd_functions.h"
+#include "current_year.h"
 
 #define MAX_WAIT 5000
-#define CURRENT_YEAR 2024
 
 GPSTracker::GPSTracker() { setup(); }
 
@@ -20,10 +20,16 @@ GPSTracker::~GPSTracker() {
     add_final_file_data();
     if (gpsConnected) end();
     ioExpander.turnPinOnOff(IO_EXP_GPS, LOW);
+#ifdef USE_BOOST
+    PPM.disableOTG();
+#endif
 }
 
 void GPSTracker::setup() {
     ioExpander.turnPinOnOff(IO_EXP_GPS, HIGH);
+#ifdef USE_BOOST /// ENABLE 5V OUTPUT
+    PPM.enableOTG();
+#endif
     display_banner();
     padprintln("Initializing...");
 
@@ -33,7 +39,10 @@ void GPSTracker::setup() {
 }
 
 bool GPSTracker::begin_gps() {
-    GPSserial.begin(bruceConfig.gpsBaudrate, SERIAL_8N1, SERIAL_RX, SERIAL_TX);
+    releasePins();
+    GPSserial.begin(
+        bruceConfigPins.gpsBaudrate, SERIAL_8N1, bruceConfigPins.gps_bus.rx, bruceConfigPins.gps_bus.tx
+    );
 
     int count = 0;
     padprintln("Waiting for GPS data");
@@ -53,6 +62,7 @@ bool GPSTracker::begin_gps() {
 
 void GPSTracker::end() {
     GPSserial.end();
+    restorePins();
 
     returnToMenu = true;
     gpsConnected = false;
@@ -216,7 +226,7 @@ void GPSTracker::add_coord() {
     file.println("        <sym>Waypoint</sym>");
     file.printf("        <ele>%f</ele>\n", gps.altitude.meters());
     file.printf("        <hdop>%f</hdop>\n", gps.hdop.hdop());
-    file.printf("        <sat>%d</sat>\n", gps.satellites.value());
+    file.printf("        <sat>%ld</sat>\n", gps.satellites.value());
     file.println("      </trkpt>");
 
     gpsCoordCount++;
@@ -224,4 +234,51 @@ void GPSTracker::add_coord() {
     file.close();
 
     padprintf(2, "Coord: %.6f, %.6f\n", gps.location.lat(), gps.location.lng());
+}
+
+void GPSTracker::releasePins() {
+    rxPinReleased = false;
+    if (bruceConfigPins.CC1101_bus.checkConflict(bruceConfigPins.gps_bus.rx) ||
+        bruceConfigPins.NRF24_bus.checkConflict(bruceConfigPins.gps_bus.rx) ||
+#if !defined(LITE_VERSION)
+        bruceConfigPins.W5500_bus.checkConflict(bruceConfigPins.gps_bus.rx) ||
+        bruceConfigPins.LoRa_bus.checkConflict(bruceConfigPins.gps_bus.rx) ||
+#endif
+        bruceConfigPins.SDCARD_bus.checkConflict(bruceConfigPins.gps_bus.rx)) {
+        // T-Embed CC1101 and T-Display S3 Touch ties this pin to the NRF24 CS; switch it to input so the GPS
+        // UART can drive it.
+        pinMode(bruceConfigPins.gps_bus.rx, INPUT);
+        rxPinReleased = true;
+    }
+}
+
+void GPSTracker::restorePins() {
+    if (rxPinReleased) {
+        if (bruceConfigPins.CC1101_bus.checkConflict(bruceConfigPins.gps_bus.rx) ||
+            bruceConfigPins.NRF24_bus.checkConflict(bruceConfigPins.gps_bus.rx) ||
+#if !defined(LITE_VERSION)
+            bruceConfigPins.W5500_bus.checkConflict(bruceConfigPins.gps_bus.rx) ||
+            bruceConfigPins.LoRa_bus.checkConflict(bruceConfigPins.gps_bus.rx) ||
+#endif
+            bruceConfigPins.SDCARD_bus.checkConflict(bruceConfigPins.gps_bus.rx)) {
+            // Restore the original board state after leaving the GPS app s
+            // o the radio/other peripherals behave as expected
+            pinMode(bruceConfigPins.gps_bus.rx, OUTPUT);
+            if (bruceConfigPins.gps_bus.rx == bruceConfigPins.CC1101_bus.cs ||
+                bruceConfigPins.gps_bus.rx == bruceConfigPins.NRF24_bus.cs ||
+#if !defined(LITE_VERSION)
+                bruceConfigPins.gps_bus.rx == bruceConfigPins.W5500_bus.cs ||
+                bruceConfigPins.gps_bus.rx == bruceConfigPins.W5500_bus.cs ||
+#endif
+                bruceConfigPins.gps_bus.rx == bruceConfigPins.SDCARD_bus.cs) {
+                // If it is conflicting to an SPI CS pin, keep it HIGH
+                digitalWrite(bruceConfigPins.gps_bus.rx, HIGH);
+            } else {
+                // If it is conflicting with any other SPI pin, keep it LOW
+                // Avoids CC1101 Jamming and nRF24 radio to keep enabled
+                digitalWrite(bruceConfigPins.gps_bus.rx, LOW);
+            }
+        }
+        rxPinReleased = false;
+    }
 }
