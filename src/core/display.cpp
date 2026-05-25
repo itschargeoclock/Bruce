@@ -1,1 +1,63 @@
-I2luY2x1ZGUgImRpc3BsYXkuaCIKI2luY2x1ZGUgImNvcmUvd2lmaS93ZWJJbnRlcmZhY2UuaCIgLy8gZm9yIHNlcnZlcgojaW5jbHVkZSAiY29yZS93aWZpL3dnLmgiICAgICAgICAgICAvL2ZvciBpc0Nvbm5lY3RlZFdpcmVndWFyZCB0byBwcmludCB3aXJlZ3VhcmQgbG9jawojaW5jbHVkZSAibXlrZXlib2FyZC5oIgojaW5jbHVkZSAic2V0dGluZ3MuaCIgLy9mb3IgdGltZVN0cgojaW5jbHVkZSAidXRpbHMuaCIKI2luY2x1ZGUgPEpQRUdEZWNvZGVyLmg+CiNpbmNsdWRlIDxpbnRlcmZhY2UuaD4gLy9mb3IgY2hhcmdpbmcgaXNjaGFyZ2luZyB0byBwcmludCBjaGFyZ2luZyBpbmRpY2F0b3IKCiNkZWZpbmUgTUFYX01FTlVfU0laRSAoaW50KSh0ZnRIZWlnaHQgLyAyNSkKCmJvb2wgX19hdHRyaWJ1dGVfXygod2VhaykpIGlzQ2hhcmdpbmcoKSB7IHJldHVybiBmYWxzZTsgfQoKaW50IFBOR0RyYXcoUE5HRFJBVyAqcERyYXcpIHsKICAgIHVpbnQxNl90IHVzUGl4ZWxzW01BWF9JTUFHRV9XSURUSF07CiAgICBwbmctPmdldExpbmUocERyYXcsIHVzUGl4ZWxzKTsKICAgIHRmdC5wdXNoSW1hZ2UoX3gsIF95ICsgcERyYXctPnksIHBEcmF3LT5pV2lkdGgsIDEsIHVzUGl4ZWxzKTsKICAgIHJldHVybiAxOwp9Cgpib29sIGRyYXdQTkcoRlMgZnMsIFN0cmluZyBmaWxlbmFtZSwgaW50IHgsIGludCB5LCBib29sIGNlbnRlcikgewogICAgX2ZzID0gJmZzOwogICAgX3ggPSB4OwogICAgX3kgPSB5OwogICAgaW50MTZfdCByYzsKICAgIHBuZyA9IG5ldyBQTkcoKTsKICAgIHJjID0gcG5nLT5vcGVuKGZpbGVuYW1lLmNfc3RyKCksIG15T3BlbiwgbXlDbG9zZSwgbXlSZWFkLCBteVNlZWssIFBOR0RyYXcpOwogICAgaWYgKHJjID09IFBOR19TVUNDRVNTKSB7CiAgICAgICAgdGZ0LnNldFN3YXBCeXRlcyh0cnVlKTsKICAgICAgICBpZiAoY2VudGVyKSB7CiAgICAgICAgICAgIF94ID0geCArICh0ZnRXaWR0aCAtIHBuZy0+Z2V0V2lkdGgoKSkgLyAyOwogICAgICAgICAgICBfeSA9IHkgKyAodGZ0SGVpZ2h0IC0gcG5nLT5nZXRIZWlnaHQoKSkgLyAyOwogICAgICAgIH0KICAgICAgICByYyA9IHBuZy0+ZGVjb2RlKE5VTEwsIDApOwogICAgICAgIHBuZy0+Y2xvc2UoKTsKICAgICAgICB0ZnQuc2V0U3dhcEJ5dGVzKGZhbHNlKTsKICAgIH0KICAgIGRlbGV0ZSBwbmc7CiAgICByZXR1cm4gKHJjID09IFBOR19TVUNDRVNTKTsKfQoKdm9pZCBkcmF3U3VibWVudShpbnQgaW5kZXgsIHN0ZDo6dmVjdG9yPE9wdGlvbj4gJm9wdGlvbnMsIGNvbnN0IGNoYXIgKnRpdGxlKSB7CiAgICBkcmF3U3RhdHVzQmFyKCk7CiAgICBpbnQgbWVudVNpemUgPSBvcHRpb25zLnNpemUoKTsKICAgIHRmdC5zZXRUZXh0Q29sb3IoYnVjZUNvbmZpZy5wcmlDb2xvciwgYnJ1Y2VDb25maWcuYmdDb2xvcik7CiAgICB0ZnQuc2V0VGV4dFNpemUoRlApOwogICAgdGZ0LmRyYXdQaXhlbCgwLCAwLCAwKTsKICAgIHRmdC5maWxsUmVjdCg2LCAzMCwgdGZ0V2lkdGggLSAxMiwgOCAqIEZQLCBicnVjZUNvbmZpZy5iZ0NvbG9yik7CiAgICB0ZnQuZHJhd1N0cmluZyh0aXRsZSwgMTIsIDMwKTsKCiAgICBpbnQgbWlkZGxlID0gMjUgKyAodGZ0SGVpZ2h0IC0gMzApIC8gMjsKICAgIGludCBtaWRkbGVfdXAgPSBtaWRkbGUgLSAodGZ0SGVpZ2h0IC0gNDIpIC8gMyAtIEZNICogTEggLyAyICsgNDsKICAgIGludCBtaWRkbGVfZG93biA9IG1pZGRsZSArICh0ZnRIZWlnaHQgLSA0MikgLyAzIC0gRk0gKiBMSCAvIDI7CgogICAgY29uc3QgY2hhciAqZmlyc3RPcHRpb24gPQogICAgICAgIGluZGV4IC0gMSA+PSAwID8gb3B0aW9uc1tpbmRleCAtIDFdLmxhYmVsLmNfc3RyKCkgOiBvcHRpb25zW21lbnVTaXplIC0gMV0ubGFiZWwuY19zdHIoKTsKICAgIHRmdC5zZXRUZXh0U2l6ZShGTSk7CiAgICB0ZnQuc2V0VGV4dENvbG9yKGJydWNlQ29uZmlnLnNlY0NvbG9yKTsKICAgIHRmdC5maWxsUmVjdCg2LCBtaWRkbGVfdXAsIHRmdFdpZHRoIC0gMTIsIDggKiBGTSwgYnJ1Y2VDb25maWcuYmdDb2xvcik7CiAgICB0ZnQuZHJhd0NlbnRyZVN0cmluZyhmaXJzdRPwdGlvbiwgdGZ0V2lkdGggLyAyLCBtaWRkbGVfdXAsIDEpOwoKICAgIGludCBzZWxlY3RlZFRleHRTaXplID0gb3B0aW9uc1tpbmRleF0ubGFiZWwubGVuZ3RoKCkgPD0gdGZ0V2lkdGggLyAoTFcgKiBGRykgLSAxID8gRkcgOiBGTTsKICAgIHRmdC5zZXRUZXh0U2l6ZShzZWxlY3RlZFRleHRTaXplKTsKICAgIHRmdC5zZXRUZXh0Q29sb3IoYnJ1Y2VDb25maWcucHJpQ29sb3IpOwogICAgdGZ0LmZpbGxSZWN0KDYsIG1pZGRsZSAtIEZHICogTEggLyAyIC0gMSwgdGZ0V2lkdGggLSAxMiwgRkcgKiBMSCArIDUsIGJydWNlQ29uZmlnLmJnQ29sb3IpOwogICAgdGZ0LmRyYXdDZW50cmVTdHJpbmcob3B0aW9uc1tpbmRleF0ubGFiZWwsIHRmdFdpZHRoIC8gMiwgbWlkZGxlIC0gc2VsZWN0ZWRUZXh0U2l6ZSAqIExIIC8gMiwgMSk7CiAgICB0ZnQuZHJhd0Zhc3RITGluZSgKICAgICAgICB0ZnRXaWR0aCAvIDIgLSBzdHJsZW4ob3B0aW9uc1tpbmRleF0ubGFiZWwuY19zdHIoKSkgKiBzZWxlY3RlZFRleHRTaXplICogTFcgLyAyLAogICAgICAgIG1pZGRsZSArIHNlbGVjdGVkVGV4dFNpemUgKiBMSCAvIDIgKyAxLAogICAgICAgIHN0cmxlbihvcHRpb25zW2luZGV4XS5sYWJlbC5jX3N0cigpKSAqIHNlbGVjdGVkVGV4dFNpemUgKiBMVywKICAgICAgICBicnVjZUNvbmZpZy5wcmlDb2xvcgogICAgKTsKCiAgICBjb29uc3QgY2hhciAqdGhpcmRPcHRpb24gPQogICAgICAgIGluZGV4ICsgMSA8IG1lbnVTaXplID8gb3B0aW9uc1tpbmRleCArIDFdLmxhYmVsLmNfc3RyKCkgOiBvcHRpb25zWzBdLmxhYmVsLmNfc3RyKCk7CiAgICB0ZnQuc2V0VGV4dFNpemUoRk0pOwogICAgdGZ0LnNldFRleHRDb2xvcihicnVjZUNvbmZpZy5zZWNDb2xvciik7CiAgICB0ZnQuZmlsbFJlY3QoNiwgbWlkZGxlX2Rvd24sIHRmdFdpZHRoIC0gMTIsIDggKiBGTSwgYnJ1Y2VDb25maWcuYmdDb2xvcik7CiAgICB0ZnQuZHJhd0NlbnRyZVN0cmluZyh0aGlyZE9wdGlvbiwgdGZ0V2lkdGggLyAyLCBtaWRkbGVfZG93biwgMSk7CiAgICB0ZnQuZmlsbFJlY3QodGZ0V2lkdGggLSA1LCAwLCA1LCB0ZnRIZWlnaHQsIGJydWNlQ29uZmlnLmJnQ29sb3IpOwogICAgdGZ0LmZpbGxSZWN0KHRmdFdpZHRoIC0gNSwgaW5kZXggKiB0ZnRIZWlnaHQgLyBtZW51U2l6ZSwgNSwgdGZ0SGVpZ2h0IC8gbWVudVNpemUsIGJydWNlQ29uZmlnLnByaUNvbG9yKTsKfQoKdm9pZCBwcmludEZvb3Rub3RlKFN0cmluZyB0ZXh0KSB7CiAgICB0ZnQuc2V0VGV4dFNpemUoRlApOwogICAgdGZ0LmRyYXdSaWdodFN0cmluZyh0ZXh0LCB0ZnRXaWR0aCAtIEJPUkRFUl9QQURfWCwgdGZ0SGVpZ2h0IC0gQk9SREVSX1BBRF9YIC0gRlAgKiBMSCwgMSk7Cn0KCnZvaWQgcHJpbnRDZW50ZXJGb290bm90ZShTdHJpbmcgdGV4dCkgewogICAgdGZ0LmZpbGxSZWN0KDEwLCB0ZnRIZWlnaHQgLSBCT1JERVJfUEFEX1ggLSBGUCAqIExILIHRmdFdpZHRoIC0gMjAsIEZQLCAqIExILCBicnVjZUNvbmZpZy5iZ0NvbG9yKTsKICAgIHRmdC5zZXRUZXh0U2l6ZShGUCk7CiAgICB0ZnQuZHJhd0NlbnRyZVN0cmluZyh0ZXh0LCB0ZnRXaWR0aCAvIDIsIHRmdEhlaWdodCAtIEJPUkRFUl9QQURfWCAtIEZQLCAqIExILCAxKTsKfQo=
+#include "display.h"
+#include "core/wifi/webInterface.h" // for server
+#include "core/wifi/wg.h"           //for isConnectedWireguard to print wireguard lock
+#include "mykeyboard.h"
+#include "settings.h" //for timeStr
+#include "utils.h"
+#include <JPEGDecoder.h>
+#include <interface.h> //for charging ischarging to print charging indicator
+
+#define MAX_MENU_SIZE (int)(tftHeight / 25)
+
+bool __attribute__((weak)) isCharging() { return false; }
+
+int PNGDraw(PNGDRAW *pDraw) {
+    uint16_t usPixels[MAX_IMAGE_WIDTH];
+    png->getLine(pDraw, usPixels);
+    tft.pushImage(_x, _y + pDraw->y, pDraw->iWidth, 1, usPixels);
+    return 1;
+}
+
+bool drawPNG(FS fs, String filename, int x, int y, bool center) {
+    _fs = &fs;
+    _x = x;
+    _y = y;
+    int16_t rc;
+    png = new PNG();
+    rc = png->open(filename.c_str(), myOpen, myClose, myRead, mySeek, PNGDraw);
+    if (rc == PNG_SUCCESS) {
+        tft.setSwapBytes(true);
+        if (center) {
+            _x = x + (tftWidth - png->getWidth()) / 2;
+            _y = y + (tftHeight - png->getHeight()) / 2;
+        }
+        rc = png->decode(NULL, 0);
+        png->close();
+        tft.setSwapBytes(false);
+    }
+    delete png;
+    return (rc == PNG_SUCCESS);
+}
+
+void drawSubmenu(int index, std::vector<Option> &options, const char *title) {
+    drawStatusBar();
+    int menuSize = options.size();
+    tft.setTextColor(buceConfig.priColor, bruceConfig.bgColor);
+    tft.setTextSize(FP);
+    tft.drawPixel(0, 0, 0);
+    tft.fillRect(6, 30, tftWidth - 1‹
+ˆ”œXÙPÛÛ™šYË˜™ÐÛÛÜ¢“°¢FgBæG&u7G&–ær‡F—FÆRÂ"Â3“° ¢–çBÖ–FFÆRÒ#R²‡FgD†V–v‡BÒ3’ò#°¢–çBÖ–FFÆU÷WÒÖ–FFÆRÒ‡FgD†V–v‡BÒC"’ò2ÒdÒ¢Ä‚ò"²C°¢–çBÖ–FFÆUöF÷vâÒÖ–FFÆR²‡FgD†V–v‡BÒC"’ò2ÒdÒ¢Ä‚ò#° ¢6öç7B6†"¦f—'7D÷F–öâÐ¢–æFW‚ÒãÒò÷F–öç5¶–æFW‚ÒÒæÆ&VÂæ5÷7G"‚’¢÷F–öç5¶ÖVçU6—¦RÒÒæÆ&VÂæ5÷7G"‚“°¢FgBç6WEFW‡E6—¦R„dÒ“°¢FgBç6WEFW‡D6öÆ÷"†''V6T6öæf–rç6V46öÆ÷"“°¢FgBæf–ÆÅ&V7BƒbÂÖ–FFÆU÷WÂFgEv–GF‚Ò"Â‚¢dÒÂ''V6T6öæf–ræ&t6öÆ÷"“°¢FgBæG&t6VçG&U7G&–ær†f—'7Q?F–öâÂFgEv–GF‚ò"ÂÖ–FFÆU÷WÂ“° ¢–çB6VÆV7FVEFW‡E6—¦RÒ÷F–öç5¶–æFW…ÒæÆ&VÂæÆVæwF‚‚’ÃÒFgEv–GF‚ò„År¢dr’Òòdr¢dÓ°¢FgBç6WEFW‡E6—¦R‡6VÆV7FVEFW‡E6—¦R“°¢FgBç6WEFW‡D6öÆ÷"†''V6T6öæf–rç&”6öÆ÷"“°¢FgBæf–ÆÅ&V7BƒbÂÖ–FFÆRÒdr¢Ä‚ò"ÒÂFgEv–GF‚Ò"Âdr¢Ä‚²RÂ''V6T6öæf–ræ&t6öÆ÷"“°¢FgBæG&t6VçG&U7G&–ær†÷F–öç5¶–æFW…ÒæÆ&VÂÂFgEv–GF‚ò"ÂÖ–FFÆRÒ6VÆV7FVEFW‡E6—¦R¢Ä‚ò"Â“°¢FgBæG&tf7D„Æ–æR€¢FgEv–GF‚ò"Ò7G&ÆVâ†÷F–öç5¶–æFW…ÒæÆ&VÂæ5÷7G"‚’’¢6VÆV7FVEFW‡E6—¦R¢Årò"À¢Ö–FFÆR²6VÆV7FVEFW‡E6—¦R¢Ä‚ò"²À¢7G&ÆVâ†÷F–öç5¶–æFW…ÒæÆ&VÂæ5÷7G"‚’’¢6VÆV7FVEFW‡E6—¦R¢ÅrÀ¢''V6T6öæf–rç&”6öÆ÷ ¢“° ¢6ööç7B6†"§F†—&D÷F–öâÐ¢–æFW‚²ÂÖVçU6—¦Rò÷F–öç5¶–æFW‚²ÒæÆ&VÂæ5÷7G"‚’¢÷F–öç5³ÒæÆ&VÂæ5÷7G"‚“°¢FgBç6WEFW‡E6—¦R„dÒ“°¢FgBç6WEFW‡D6öÆ÷"†''V6T6öæf–rç6V46öÆ÷"ŠNÂˆ™š[™XÝ
+‹ZYWÙÝÛ‹ÚYHL‹
+ˆ“KœXÙPÛÛ™šYË˜™ÐÛÛÜŠNÂˆ™˜]ÐÙ[™TÝš[™Ê\™Ü[Û‹ÚYÈ‹ZYWÙÝÛ‹JNÂˆ™š[™XÝ
+ÚYHKKZYÚœXÙPÛÛ™šYË˜™ÐÛÛÜŠNÂˆ™š[™XÝ
+ÚYHK[™^
+ˆZYÚÈY[TÚ^™KKZYÚÈY[TÚ^™KœXÙPÛÛ™šYËœšPÛÛÜŠNÂŸB‚›ÚYš[›ÛÝ›ÝJÝš[™È^
+HÂˆœÙ]^Ú^™J”
+NÂˆ™˜]ÔšYÚÝš[™Ê^ÚYH“Ô‘T—ÔQÖZYÚH“Ô‘T—ÔQÖH”
+ˆJNÂŸB‚›ÚYš[Ù[\‘›ÛÝ›ÝJÝš[™È^
+HÂˆ™š[™XÝ
+LZYÚH“Ô‘T—ÔQÖH”
+ˆ tftWidth - 20, FP, * LH, bruceConfig.bgColor);
+    tft.setTextSize(FP);
+    tft.drawCentreString(text, tftWidth / 2, tftHeight - BORDER_PAD_X - FP, * LH, 1);
+}
