@@ -1,1 +1,110 @@
-I2luY2x1ZGUgImRpc3BsYXkuaCIKI2luY2x1ZGUgImNvcmUvd2lmaS93ZWJJbnRlcmZhY2UuaCIgLy8gZm9yIHNlcnZlcgojaW5jbHVkZSAiY29yZS93aWZpL3dnLmgiICAgICAgICAgICAvL2ZvciBpc0Nvbm5lY3RlZFdpcmVndWFyZCB0byBwcmludCB3aXJlZ3VhcmQgbG9jawojaW5jbHVkZSAibXlrZXlib2FyZC5oIgojaW5jbHVkZSAic2V0dGluZ3MuaCIgLy9mb3IgdGltZVN0cgojaW5jbHVkZSAidXRpbHMuaCIKI2luY2x1ZGUgPEpQRUdEZWNvZGVyLmg+CiNpbmNsdWRlIDxpbnRlcmZhY2UuaD4gLy9mb3IgY2hhcmdpbmcgaXNjaGFyZ2luZyB0byBwcmludCBjaGFyZ2luZyBpbmRpY2F0b3IKI2luY2x1ZGUgPG1lbW9yeT4KCiNkZWZpbmUgTUFYX01FTlVfU0laRSAoaW50KSh0ZnRIZWlnaHQgLyAyNSkKCnZvaWQgcGFuZWxTbGVlcChib29sIG9uKSB7CiNpZiBkZWZpbmVkKFNUNzc4OV8yX0RSSVZFUikgfHwgZGVmaW5lZChTVDc3ODlfRFJJVkVSKQogICAgaWYgKG9uKSB7CiAgICAgICAgdGZ0LndyaXRlY29tbWFuZCgweDEwKTsgLy8gU0xQSU46IHBhbmVsIG9mZgogICAgICAgIGRlbGF5KDUpOwogICAgfSBlbHNlIHsKICAgICAgICB0ZnQud3JpdGVjb21tYW5kKDB4MTEpOyAvLyBTTFBPVVQ6IHBhbmVsIG9uCiAgICAgICAgZGVsYXkoMTIwKTsKICAgIH0KI2VuZGlmCiAgICB0ZnQuc2V0U2xlZXBNb2RlKG9uKTsKfQoKYm9vbCBfX2F0dHJpYnV0ZV9fKCh3ZWFrKSkgaXNDaGFyZ2luZygpIHsgcmV0dXJuIGZhbHNlOyB9CgppbnQgUE5HRHJhdyhQTkdEUkFXICpwRHJhdykgewogICAgdWludDE2X3QgdXNQaXhlbHNbTUFYX0lNQUdFX1dJRFRIXTsKICAgIHBuZy0+Z2V0TGluZShwRHJhdywgdXNQaXhlbHMpOwogICAgdGZ0LnB1c2hJbWFnZShfeCwgX3kgKyBwRHJhdy0+eSwgcERyYXctPmlXaWR0aCwgMSwgdXNQaXhlbHMpOwogICAgcmV0dXJuIDE7Cn0KCmJvb2wgZHJhd1BORyhGUyBmcywgU3RyaW5nIGZpbGVuYW1lLCBpbnQgeCwgaW50IHksIGJvb2wgY2VudGVyKSB7CiAgICBfZnMgPSAmZnM7CiAgICBfeCA9IHg7CiAgICBfeSA9IHk7CiAgICBpbnQxNl90IHJjOwogICAgcG5nID0gbmV3IFBORygpOwogICAgcmMgPSBwbmctPm9wZW4oZmlsZW5hbWUuY19zdHIoKSwgbXlPcGVuLCBteUNsb3NlLCBteVJlYWQsIG15U2VlaywgUE5HRHJhdyk7CiAgICBpZiAocmMgPT0gUE5HX1NVQ0NFU1MpIHsKICAgICAgICB0ZnQuc2V0U3dhcEJ5dGVzKHRydWUpOwogICAgICAgIGlmIChjZW50ZXIpIHsKICAgICAgICAgICAgX3ggPSB4ICsgKHRmdFdpZHRoIC0gcG5nLT5nZXRXaWR0aCgpKSAvIDI7CiAgICAgICAgICAgIF95ID0geSArICh0ZnRIZWlnaHQgLSBwbmctPmdldEhlaWdodCgpKSAvIDI7CiAgICAgICAgfQogICAgICAgIHJjID0gcG5nLT5kZWNvZGUoTlVMTCwgMCk7CiAgICAgICAgcG5nLT5jbG9zZSgpOwogICAgICAgIHRmdC5zZXRTd2FwQnl0ZXMoZmFsc2UpOwogICAgfQogICAgZGVsZXRlIHBuZzsKICAgIHJldHVybiAocmMgPT0gUE5HX1NVQ0NFU1MpOwp9Cgp2b2lkIGRyYXdTdWJtZW51KGludCBpbmRleCwgc3RkOjp2ZWN0b3I8T3B0aW9uPiAmb3B0aW9ucywgY29uc3QgY2hhciAqdGl0bGUpIHsKICAgIGRyYXdTdGF0dXNCYXIoKTsKICAgIGludCBtZW51U2l6ZSA9IG9wdGlvbnMuc2l6ZSgpOwogICAgdGZ0LnNldFRleHRDb2xvcihicnVjZUNvbmZpZy5wcmlDb2xvciwgYnJ1Y2VDb25maWcuYmdDb2xvcik7CiAgICB0ZnQuc2V0VGV4dFNpemUoRlApOwogICAgdGZ0LmRyYXdQaXhlbCgwLCAwLCAwKTsKICAgIHRmdC5maWxsUmVjdCg2LCAzMCwgdGZ0V2lkdGggLSAxMiwgOCAqIEZQLCBicnVjZUNvbmZpZy5iZ0NvbG9yik7CiAgICB0ZnQuZHJhd1N0cmluZyh0aXRsZSwgMTIsIDMwKTsKICAgIGludCBtaWRkbGUgPSAyNSArICh0ZnRIZWlnaHQgLSAzMCkgLyAyOwogICAgaW50IG1pZGRsZV91cCA9IG1pZGRsZSArICh0ZnRIZWlnaHQgLSA0MikgLyAzIC0gRk0gKiBMSCAvIDIgKyA0OwogICAgaW50IG1pZGRsZV9kb3duID0gbWlkZGxlICsgKHRmdEhlaWdodCAtIDQyKSAvIDMgLSBGTSAqIExIIC8gMjsKICAgIGNvbnN0IGNoYXIgKmZpcnN0T3B0aW9uID0gaW5kZXggLSAxID49IDAgPyBvcHRpb25zW2luZGV4IC0gMV0ubGFiZWwuY19zdHIoKSA6IG9wdGlvbnNbbWVudVNpemUgLSAxXS5sYWJlbC5jX3N0cigpOwogICAgdGZ0LnNldFRleHRTaXplKEZNKTsKICAgIHRmdC5zZXRUZXh0Q29sb3IoYnJ1Y2VDb25maWcuc2VjQ29sb3IpOwogICAgdGZ0LmZpbGxSZWN0KDYsIG1pZGRsZV91cCwgdGZ0V2lkdGggLSAxMiwgOCAqIEZNLCBicnVjZUNvbmZpZy5iZ0NvbG9yik7CiAgICB0ZnQuZHJhd0NlbnRyZVN0cmluZyhmaXJzdE9wdGlvbiwgdGZ0V2lkdGggLyAyLCBtaWRkbGVfdXAsIDEpOwogICAgaW50IHNlbGVjdGVkVGV4dFNpemUgPSBvcHRpb25zW2luZGV4XS5sYWJlbC5sZW5ndGgoKSA8PSB0ZnRXaWR0aCAvIChMVyAqIEZHKSAtIDEgPyBGRyA6IEZNOwogICAgdGZ0LnNldFRleHRTaXplKHNlbGVjdGVkVGV4dFNpemUpOwogICAgdGZ0LnNldFRleHRDb2xvcihicnVjZUNvbmZpZy5wcmlDb2xvcik7CiAgICB0ZnQuZmlsbFJlY3QoNiwgbWlkZGxlIC0gRkcgKiBMSCAvIDIgLSAxLCB0ZnRXaWR0aCAtIDEyLCBGRyAqIExIICsgNSwgYnJ1Y2VDb25maWcuYmdDb2xvcik7CiAgICB0ZnQuZHJhd0NlbnRyZVN0cmluZyhvcHRpb25zW2luZGV4XS5sYWJlbCwgdGZ0V2lkdGggLyAyLCBtaWRkbGUgLSBzZWxlY3RlZFRleHRTaXplICogTEggLyAyLCAxKTsKICAgIHRmdC5kcmF3RmFzdEhMaW5lKHRmdFdpZHRoIC8gMiAtIHN0cmxlbihvcHRpb25zW2luZGV4XS5sYWJlbC5jX3N0cigpKSAqIHNlbGVjdGVkVGV4dFNpemUgKiBMVyAvIDIsIG1pZGRsZSArIHNlbGVjdGVkVGV4dFNpemUgKiBMSCAvIDIgKyAxLCBzdHJsZW4ob3B0aW9uc1tpbmRleF0ubGFiZWwuY19zdHIoKSkgKiBzZWxlY3RlZFRleHRTaXplICogTFcsIGJydWNlQ29uZmlnLnByaUNvbG9yKTsKICAgIGNvbnN0IGNoYXIgKnRoaXJkT3B0aW9uID0gaW5kZXggKyAxIDwgbWVudVNpemUgPyBvcHRpb25zW2luZGV4ICsgMV0ubGFiZWwuY19zdHIoKSA6IG9wdGlvbnNbMF0ubGFiZWwuY19zdHIoKTsKICAgIHRmdC5zZXRUZXh0U2l6ZShGTSk7CiAgICB0ZnQuc2V0VGV4dENvbG9yKGJydWNlQ29uZmlnLnNlY0NvbG9yKTsKICAgIHRmdC5maWxsUmVjdCg2LCBtaWRkbGVfZG93biwgdGZ0V2lkdGggLSAxMiwgOCAqIEZNLCBicnVjZUNvbmZpZy5iZ0NvbG9yik7CiAgICB0ZnQuZHJhd0NlbnRyZVN0cmluZyh0aGlyZE9wdGlvbiwgdGZ0V2lkdGggLyAyLCBtaWRkbGVfZG93biwgMSk7CiAgICB0ZnQuZmlsbFJlY3QodGZ0V2lkdGggLSA1LCAwLCA1LCB0ZnRIZWlnaHQsIGJydWNlQ29uZmlnLmJnQ29sb3IpOwogICAgdGZ0LmZpbGxSZWN0KHRmdFdpZHRoIC0gNSwgaW5kZXggKiB0ZnRIZWlnaHQgLyBtZW51U2l6ZSwgNSwgdGZ0SGVpZ2h0IC8gbWVudVNpemUsIGJydWNlQ29uZmlnLnByaUNvbG9yKTsKfQoKdm9pZCBwcmludEZvb3Rub3RlKFN0cmluZyB0ZXh0KSB7CiAgICB0ZnQuc2V0VGV4dFNpemUoRlApOwogICAgdGZ0LmRyYXdSaWdodFN0cmluZyh0ZXh0LCB0ZnRXaWR0aCAtIEJPUkRFUl9QQURfWCwgdGZ0SGVpZ2h0IC0gQk9SREVSX1BBRF9YIC0gRlAgKiBMSCwgMSk7Cn0KCnZvaWQgcHJpbnRDZW50ZXJGb290bm90ZShTdHJpbmcgdGV4dCkgewogICAgdGZ0LmZpbGxSZWN0KDEwLCB0ZnRIZWlnaHQgLSBCT1JERVJfUEFEX1ggLSBGUCAqIExILHRmdFdpZHRoIC0gMjAsIEZQLCAqIExILCBicnVjZUNvbmZpZy5iZ0NvbG9yKTsKICAgIHRmdC5zZXRUZXh0U2l6ZShGUCk7CiAgICB0ZnQuZHJhd0NlbnRyZVN0cmluZyh0ZXh0LCB0ZnRXaWR0aCAvIDIsIHRmdEhlaWdodCAtIEJPUkRFUl9QQURfWCAtIEZQLCAqIExILCAxKTsKfQo=
+#include "display.h"
+#include "core/wifi/webInterface.h" // for server
+#include "core/wifi/wg.h"           //for isConnectedWireguard to print wireguard lock
+#include "mykeyboard.h"
+#include "settings.h" //for timeStr
+#include "utils.h"
+#include <JPEGDecoder.h>
+#include <interface.h> //for charging ischarging to print charging indicator
+#include <memory>
+
+#define MAX_MENU_SIZE (int)(tftHeight / 25)
+
+// Send the ST7789 into or out of sleep mode
+void panelSleep(bool on) {
+#if defined(ST7789_2_DRIVER) || defined(ST7789_DRIVER)
+    if (on) {
+        tft.writecommand(0x10); // SLPIN: panel off
+        delay(5);
+    } else {
+        tft.writecommand(0x11); // SLPOUT: panel on
+        delay(120);
+    }
+#endif
+    // Disables tft writings on the display
+    tft.setSleepMode(on);
+}
+
+bool __attribute__((weak)) isCharging() { return false; }
+
+// FIX: PNGdec 1.1.6 requires int return type
+int PNGDraw(PNGDRAW *pDraw) {
+    uint16_t usPixels[MAX_IMAGE_WIDTH];
+    png->getLine(pDraw, usPixels);
+    tft.pushImage(_x, _y + pDraw->y, pDraw->iWidth, 1, usPixels);
+    return 1;
+}
+
+bool drawPNG(FS fs, String filename, int x, int y, bool center) {
+    _fs = &fs;
+    _x = x;
+    _y = y;
+    int16_t rc;
+    png = new PNG();
+    rc = png->open(filename.c_str(), myOpen, myClose, myRead, mySeek, PNGDraw);
+    if (rc == PNG_SUCCESS) {
+        tft.setSwapBytes(true);
+        if (center) {
+            _x = x + (tftWidth - png->getWidth()) / 2;
+            _y = y + (tftHeight - png->getHeight()) / 2;
+        }
+        rc = png->decode(NULL, 0);
+        png->close();
+        tft.setSwapBytes(false);
+    }
+    delete png;
+    return (rc == PNG_SUCCESS);
+}
+
+void drawSubmenu(int index, std::vector<Option> &options, const char *title) {
+    drawStatusBar();
+    int menuSize = options.size();
+    tft.setTextColor(bruceConfig.priColor, bruceConfig.bgColor);
+    tft.setTextSize(FP);
+    tft.drawPixel(0, 0, 0);
+    tft.fillRect(6, 30, tftWidth - 12, 8 * FP, bruceConfig.bgColor);
+    tft.drawString(title, 12, 30);
+
+    int middle = 25 + (tftHeight - 30) / 2;
+    int middle_up = middle - (tftHeight - 42) / 3 - FM * LH / 2 + 4;
+    int middle_down = middle + (tftHeight - 42) / 3 - FM * LH / 2;
+
+    const char *firstOption =
+        index - 1 >= 0 ? options[index - 1].label.c_str() : options[menuSize - 1].label.c_str();
+    tft.setTextSize(FM);
+    tft.setTextColor(bruceConfig.secColor);
+    tft.fillRect(6, middle_up, tftWidth - 12, 8 * FM, bruceConfig.bgColor);
+    tft.drawCentreString(firstOption, tftWidth / 2, middle_up, 1);
+
+    int selectedTextSize = options[index].label.length() <= tftWidth / (LW * FG) - 1 ? FG : FM;
+    tft.setTextSize(selectedTextSize);
+    tft.setTextColor(bruceConfig.priColor);
+    tft.fillRect(6, middle - FG * LH / 2 - 1, tftWidth - 12, FG * LH + 5, bruceConfig.bgColor);
+    tft.drawCentreString(options[index].label, tftWidth / 2, middle - selectedTextSize * LH / 2, 1);
+    tft.drawFastHLine(
+        tftWidth / 2 - strlen(options[index].label.c_str()) * selectedTextSize * LW / 2,
+        middle + selectedTextSize * LH / 2 + 1,
+        strlen(options[index].label.c_str()) * selectedTextSize * LW,
+        bruceConfig.priColor
+    );
+
+    const char *thirdOption =
+        index + 1 < menuSize ? options[index + 1].label.c_str() : options[0].label.c_str();
+    tft.setTextSize(FM);
+    tft.setTextColor(bruceConfig.secColor);
+    tft.fillRect(6, middle_down, tftWidth - 12, 8 * FM, bruceConfig.bgColor);
+    tft.drawCentreString(thirdOption, tftWidth / 2, middle_down, 1);
+    tft.fillRect(tftWidth - 5, 0, 5, tftHeight, bruceConfig.bgColor);
+    tft.fillRect(tftWidth - 5, index * tftHeight / menuSize, 5, tftHeight / menuSize, bruceConfig.priColor);
+}
+
+void printFootnote(String text) {
+    tft.setTextSize(FP);
+    tft.drawRightString(text, tftWidth - BORDER_PAD_X, tftHeight - BORDER_PAD_X - FP * LH, 1);
+}
+
+void printCenterFootnote(String text) {
+    tft.fillRect(10, tftHeight - BORDER_PAD_X - FP * LH, tftWidth - 20, FP * LH, bruceConfig.bgColor);
+    tft.setTextSize(FP);
+    tft.drawCentreString(text, tftWidth / 2, tftHeight - BORDER_PAD_X - FP * LH, 1);
+}
